@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-500 to-slate-900 ">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h2 className="text-2xl text-blue-700 font-bold mb-6 text-center">
+      <div className="bg-black p-8 rounded-lg shadow-md w-full max-w-md">
+        <h2 className="text-2xl text-blue-400 font-bold mb-6 text-center">
           Welcome to Our Website
         </h2>
         <p className="text-lg text-center text-blue-500 mb-12">

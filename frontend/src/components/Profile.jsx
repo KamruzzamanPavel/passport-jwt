@@ -13,7 +13,7 @@ const Profile = () => {
 
   useEffect(() => {
     const loadUser = async () => {
-      if (localStorage.token) {
+      if (token) {
         try {
           const res = await axios.get("/profile", {
             headers: { Authorization: `Bearer ${token}` },
@@ -38,7 +38,7 @@ const Profile = () => {
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md text-center">
         {!loading && isAuthenticated && user ? (
           <div>
-            <h1 className="text-2xl font-bold mb-6">Welcome, {user.name}</h1>
+            <h1 className="text-2xl font-bold mb-6">Welcome {user.name}</h1>
             <button
               onClick={logout_2}
               className="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
