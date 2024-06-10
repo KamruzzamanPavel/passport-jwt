@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "../../config/axiosConfig.js";
 import { loginSuccess, loginFail } from "../../redux/authSlice";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Login = () => {
   const [formData, setFormData] = useState({ name: "", password: "" });
   const { name, password } = formData;
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Use useNavigate hook
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,13 +18,14 @@ const Login = () => {
     try {
       const res = await axios.post("/auth/login", formData);
       dispatch(loginSuccess(res.data.token));
+      navigate("/profile"); // Navigate to the profile page after successful login
     } catch (err) {
       dispatch(loginFail());
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-500 to-slate-900">
       <form
         onSubmit={onSubmit}
         className="bg-white p-8 rounded-lg shadow-md w-full max-w-md"
@@ -42,7 +45,7 @@ const Login = () => {
         <div className="mb-6">
           <label className="block text-gray-700 mb-2">Password</label>
           <input
-            type="text"
+            type="password" // Change type to password
             name="password"
             value={password}
             onChange={onChange}
